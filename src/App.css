@@ -93,16 +93,18 @@ label {
 }
 
 input[type=submit] {
-  padding-top: 10px;
   background-color: #460485;
   color: white;
-  padding: 12px 20px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  width : 23.5%;
-  /* margin: 0; */
-  position: absolute;
+  width :  50%;
+  text-align: center;
+  position: relative;
+  margin: 0 auto;
+  padding: 20px 30px;
+  display: table-cell;
+  vertical-align: middle;
  
 }
 
