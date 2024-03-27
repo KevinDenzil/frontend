@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import bcrypt from 'bcryptjs';
 import emailjs from '@emailjs/browser'
 
+
+
 const Form = () => {
 
     const [name, setName] = useState("")
@@ -18,17 +20,33 @@ const Form = () => {
     const templateParams = {
         from_name: "Kevin",
         to_name : name,
-        message : "Wassup CSE-B!!!",
+        message : "Your account has been registered!",
         to_email : email
     }
-
     
+    const [showpass, setShowpass] = useState(false)
 
     const navigate = useNavigate();
+
+    const handlePasswordClick = () => {
+        setShowpass(!showpass)
+    }
+    const handleMouseDownPassword = (event) => {
+        event.preventDefault();
+    };
+
+    function Submitbutton(){
+        if(name && regno && email && password){
+            return <input type = 'submit' />
+        }else{
+            return <input type = 'submit' disabled />
+        }
+    }
 
     function handleSubmit(event) {
         const hash = bcrypt.hashSync(password, 10);
         event.preventDefault();
+        // axios.post("http://localhost:3001/create", {name, regno, email, hash})
         axios.post("https://kevins-login-app-a00ce4e3a9f1.herokuapp.com/create", {name, regno, email, hash})
         .then(res => {
             emailjs.send(serviceId, templateId, templateParams, publicKey)
@@ -40,14 +58,14 @@ const Form = () => {
                 console.log(error)
             })
             console.log(res);
-            navigate("/dash");
+            navigate(`/dash/${regno}`);
         }).catch(err => console.log(err));
     }
 
 
     return(
         <>  
-            <br /><br /><br /><br />
+            <br /><br /><br />
             <form onSubmit={handleSubmit}>
                 <h2>Enter Details</h2>
                 <div>
@@ -62,6 +80,11 @@ const Form = () => {
                     <label>Email : </label>
                     <input type = 'email' placeholder = "Enter Email" onChange={e => setEmail(e.target.value)} />
                 </div>
+                {/* <div> 
+                <label>Password : </label>
+                    <input type = {showpass ? 'text' : 'password'} onMouseDown={handleMouseDownPassword} placeholder = "Enter Password" onChange={e => setPassword(e.target.value)} />
+                    <IconButton onClick={handlePasswordClick}>{showpass ? (<Visibility />) : (<VisibilityOff />)}</IconButton>
+                </div> */}
                 <div>
                     <label>Password : </label>
                     <input type = 'password' placeholder = "Enter Password" onChange={e => setPassword(e.target.value)} />
@@ -69,14 +92,14 @@ const Form = () => {
                 <div>
                     <br />
                 <center>
-                <input type = 'submit' />
+                <Submitbutton />
                 </center>
                 <br />
                 </div>
             </form>
             <h2>Already have an account?</h2>
             <center>
-            <button class = 'loginbtn' onClick={() => {navigate('/login')}}>Log In</button>
+            <button className = 'loginbtn' onClick={() => {navigate('/login')}}>Log In</button>
             </center>
         </>
     )

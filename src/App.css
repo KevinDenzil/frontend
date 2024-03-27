@@ -172,3 +172,61 @@ body {
   background-color: #282828;
   color:white;
 }
+
+
+.profbtn {
+  background-color: #460485;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width :  20%;
+  text-align: center;
+  position: relative;
+  float: right;
+  margin: 0 auto;
+  padding: 20px 30px;
+  display: table-cell;
+  vertical-align: middle;
+ 
+}
+
+.profbtn :hover{
+  background-color: #5c14a0;
+}
+
+.delbtn {
+  background-color: #ae0909;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width :  50%;
+  text-align: center;
+  position: relative;
+  margin: 0 auto;
+  padding: 20px 30px;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.delbtn :hover{
+  background-color: #fe0707;
+}
+
+.logoutbtn {
+  background-color: #460485;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width :  20%;
+  text-align: center;
+  position: relative;
+  float: left;
+  margin: 0 auto;
+  padding: 20px 30px;
+  display: table-cell;
+  vertical-align: middle;
+ 
+}

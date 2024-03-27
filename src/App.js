@@ -1,8 +1,8 @@
-import logo from './logo.svg';
 import './App.css'
 import Login from './Components/Login'
 import Form from './Components/Form';
 import Dashboard from './Components/Dashboard';
+import Profile from './Components/Profile';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -12,7 +12,8 @@ function App() {
       <Routes>
         <Route path = '/' element={<Form />} />
         <Route path = '/login' element={<Login />} />
-        <Route path = '/dash' element={<Dashboard />} />
+        <Route path = '/dash/:id' element={<Dashboard />} />
+        <Route path = '/profile/:id' element = {<Profile />} />
       </Routes>
       </BrowserRouter>
     </>

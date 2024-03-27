@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
-
+// http://localhost:3000
 const Table = () => {
     const [data, setData] = useState([])
     useEffect(() => {
         const fetchAllData = async ()=>{
             try{
+                // const res = await axios.get("http://localhost:3001/api");
                 const res = await axios.get("https://kevins-login-app-a00ce4e3a9f1.herokuapp.com/api");
                 setData(res.data)
                 if(res.data){
-                    console.log(res.data);
+                    // console.log(res.data);
                 }else{
                     console.log("Nothing");
                 }
